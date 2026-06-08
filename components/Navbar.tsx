@@ -18,15 +18,16 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Read saved theme on mount (defaults to light)
+  // Read saved theme on mount (defaults to light; ignores any legacy value)
   useEffect(() => {
-    setDark(localStorage.getItem("theme") === "dark");
+    localStorage.removeItem("theme"); // clear stale preference from older builds
+    setDark(localStorage.getItem("checkmed-theme") === "dark");
   }, []);
 
   // Apply theme
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    localStorage.setItem("checkmed-theme", dark ? "dark" : "light");
   }, [dark]);
 
   return (
@@ -63,8 +64,9 @@ export function Navbar() {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setDark((d) => !d)}
-            aria-label="Toggle theme"
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+            title={dark ? "Switch to light mode" : "Switch to dark mode"}
+            className="w-9 h-9 rounded-lg flex items-center justify-center border border-slate-200 dark:border-white/15 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
           >
             {dark ? <Sun size={16} /> : <Moon size={16} />}
           </button>

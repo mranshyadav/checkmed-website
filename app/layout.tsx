@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* No-flash theme: apply saved/system theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark');}catch(e){}})();`,
+            __html: `(function(){try{localStorage.removeItem('theme');document.documentElement.classList.toggle('dark',localStorage.getItem('checkmed-theme')==='dark');}catch(e){}})();`,
           }}
         />
       </head>
