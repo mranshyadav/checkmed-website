@@ -69,9 +69,9 @@ const employees = [
 ];
 
 const riskStyles: Record<Risk, string> = {
-  Low:    "text-emerald-600 bg-emerald-50",
-  Medium: "text-amber-600  bg-amber-50",
-  High:   "text-red-600    bg-red-50",
+  Low:    "text-emerald-600 bg-emerald-50 dark:text-emerald-400 dark:bg-emerald-500/10",
+  Medium: "text-amber-600  bg-amber-50  dark:text-amber-400  dark:bg-amber-500/10",
+  High:   "text-red-600    bg-red-50    dark:text-red-400    dark:bg-red-500/10",
 };
 
 const barColor: Record<Risk, string> = {
@@ -92,40 +92,40 @@ function Dashboard() {
     <div className="relative w-full max-w-[540px] mx-auto">
       {/* Glow halo behind card */}
       <div
-        className="absolute inset-x-0 -bottom-10 h-48 pointer-events-none blur-3xl opacity-30"
+        className="absolute inset-x-0 -bottom-10 h-48 pointer-events-none blur-3xl opacity-30 dark:opacity-40"
         style={{ background: "radial-gradient(ellipse at 50% 100%, #14b8a6 0%, transparent 70%)" }}
       />
 
       {/* Left floating badge */}
-      <div className="float-card absolute -left-6 sm:-left-10 xl:-left-32 top-1/4 z-20 flex items-center gap-2.5 rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-md px-3 py-2.5 shadow-xl">
-        <span className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 bg-teal-100">
-          <ShieldCheck size={14} className="text-teal-600" />
+      <div className="float-card absolute -left-6 sm:-left-10 xl:-left-32 top-1/4 z-20 flex items-center gap-2.5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-2.5 shadow-xl">
+        <span className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 bg-teal-100 dark:bg-teal-500/15">
+          <ShieldCheck size={14} className="text-teal-600 dark:text-teal-400" />
         </span>
         <div>
-          <div className="text-[10px] font-bold text-slate-900 whitespace-nowrap">IPD Protected</div>
-          <div className="text-[9px] text-slate-500 whitespace-nowrap">34 prevented</div>
+          <div className="text-[10px] font-bold text-slate-900 dark:text-white whitespace-nowrap">IPD Protected</div>
+          <div className="text-[9px] text-slate-500 dark:text-slate-400 whitespace-nowrap">34 prevented</div>
         </div>
       </div>
 
       {/* Right floating badge */}
-      <div className="float-card-2 absolute -right-6 sm:-right-10 xl:-right-32 bottom-1/4 z-20 flex items-center gap-2.5 rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-md px-3 py-2.5 shadow-xl">
-        <span className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-100">
-          <HeartPulse size={14} className="text-emerald-600" />
+      <div className="float-card-2 absolute -right-6 sm:-right-10 xl:-right-32 bottom-1/4 z-20 flex items-center gap-2.5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-2.5 shadow-xl">
+        <span className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 bg-emerald-100 dark:bg-emerald-500/15">
+          <HeartPulse size={14} className="text-emerald-600 dark:text-emerald-400" />
         </span>
         <div>
-          <div className="text-[10px] font-bold text-slate-900 whitespace-nowrap">Proactive Care</div>
-          <div className="text-[9px] text-slate-500 whitespace-nowrap">Before it&apos;s critical</div>
+          <div className="text-[10px] font-bold text-slate-900 dark:text-white whitespace-nowrap">Proactive Care</div>
+          <div className="text-[9px] text-slate-500 dark:text-slate-400 whitespace-nowrap">Before it&apos;s critical</div>
         </div>
       </div>
 
       {/* Main card */}
-      <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-[0_32px_80px_-12px_rgba(0,0,0,0.25)]">
+      <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/[0.09] bg-white dark:bg-slate-900/90 dark:backdrop-blur-xl shadow-[0_32px_80px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_48px_120px_rgba(0,0,0,0.7)]">
         {/* Window chrome */}
-        <div className="flex items-center gap-1.5 px-4 py-3 border-b border-slate-100 bg-slate-50">
+        <div className="flex items-center gap-1.5 px-4 py-3 border-b border-slate-100 dark:border-white/[0.06] bg-slate-50 dark:bg-white/[0.025]">
           <span className="w-3 h-3 rounded-full bg-red-400/80" />
           <span className="w-3 h-3 rounded-full bg-amber-400/80" />
           <span className="w-3 h-3 rounded-full bg-emerald-400/80" />
-          <div className="flex-1 mx-3 h-5 rounded-md flex items-center px-3 gap-1.5 text-[10px] text-slate-400 bg-slate-200/60">
+          <div className="flex-1 mx-3 h-5 rounded-md flex items-center px-3 gap-1.5 text-[10px] text-slate-400 dark:text-slate-500 bg-slate-200/60 dark:bg-white/[0.03] border border-transparent dark:border-white/[0.06]">
             <ShieldCheck size={9} className="text-teal-500" />
             checkmed.in/dashboard
           </div>
@@ -135,28 +135,28 @@ function Dashboard() {
           {/* KPI row */}
           <div className="grid grid-cols-3 gap-2">
             {[
-              { Icon: TrendingDown, val: "34",  sub: "IPD prevented", iconCls: "text-teal-600",    bg: "bg-teal-50"    },
-              { Icon: Users,        val: "428", sub: "covered",       iconCls: "text-blue-600",    bg: "bg-blue-50"    },
-              { Icon: HeartPulse,   val: "83%", sub: "↑ 7 pts",       iconCls: "text-emerald-600", bg: "bg-emerald-50" },
+              { Icon: TrendingDown, val: "34",  sub: "IPD prevented",  iconCls: "text-teal-600 dark:text-teal-400",       bg: "bg-teal-50 dark:bg-teal-500/10"       },
+              { Icon: Users,        val: "428", sub: "covered",        iconCls: "text-blue-600 dark:text-blue-400",       bg: "bg-blue-50 dark:bg-blue-500/10"       },
+              { Icon: HeartPulse,   val: "83%", sub: "↑ 7 pts",        iconCls: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-50 dark:bg-emerald-500/10" },
             ].map(({ Icon, val, sub, iconCls, bg }) => (
-              <div key={sub} className="rounded-xl p-2.5 border border-slate-100 bg-white">
+              <div key={sub} className="rounded-xl p-2.5 border border-slate-100 dark:border-white/[0.06] bg-white dark:bg-white/[0.03]">
                 <div className={`w-6 h-6 rounded-lg flex items-center justify-center mb-1.5 ${bg}`}>
                   <Icon size={12} className={iconCls} />
                 </div>
-                <div className="text-base font-extrabold text-slate-900 leading-none">{val}</div>
-                <div className="text-[9px] text-slate-400 mt-0.5 leading-tight">{sub}</div>
+                <div className="text-base font-extrabold text-slate-900 dark:text-white leading-none">{val}</div>
+                <div className="text-[9px] text-slate-400 dark:text-slate-500 mt-0.5 leading-tight">{sub}</div>
               </div>
             ))}
           </div>
 
           {/* Risk monitor */}
-          <div className="rounded-xl border border-slate-100 bg-white p-3">
+          <div className="rounded-xl border border-slate-100 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] p-3">
             <div className="flex items-center justify-between mb-2.5">
-              <span className="text-[10px] font-semibold text-slate-700 flex items-center gap-1.5">
+              <span className="text-[10px] font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
                 <Activity size={10} className="text-teal-500" />
                 IPD Risk Monitor
               </span>
-              <span className="text-[8px] text-teal-600 px-1.5 py-0.5 rounded-full font-medium flex items-center gap-1 bg-teal-50">
+              <span className="text-[8px] text-teal-600 dark:text-teal-400 px-1.5 py-0.5 rounded-full font-medium flex items-center gap-1 bg-teal-50 dark:bg-teal-500/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse inline-block" />
                 Live
               </span>
@@ -166,7 +166,7 @@ function Dashboard() {
                 <div
                   key={emp.name}
                   className={`flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors duration-500 ${
-                    i === activeIdx ? "bg-slate-50" : ""
+                    i === activeIdx ? "bg-slate-50 dark:bg-white/[0.04]" : ""
                   }`}
                 >
                   <div className={`w-6 h-6 rounded-full ${emp.color} flex items-center justify-center text-[8px] font-bold text-white flex-shrink-0`}>
@@ -174,14 +174,14 @@ function Dashboard() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1">
-                      <span className="text-[9px] font-semibold text-slate-700 truncate">{emp.name}</span>
-                      <span className="text-[8px] text-slate-400">{emp.dept}</span>
+                      <span className="text-[9px] font-semibold text-slate-700 dark:text-slate-200 truncate">{emp.name}</span>
+                      <span className="text-[8px] text-slate-400 dark:text-slate-500">{emp.dept}</span>
                     </div>
                     <div className="flex items-center gap-1 mt-0.5">
-                      <div className="flex-1 h-1 rounded-full overflow-hidden bg-slate-100">
+                      <div className="flex-1 h-1 rounded-full overflow-hidden bg-slate-100 dark:bg-white/[0.08]">
                         <div className={`h-full rounded-full transition-all duration-700 ${barColor[emp.risk]}`} style={{ width: `${emp.score}%` }} />
                       </div>
-                      <span className="text-[8px] font-semibold text-slate-500 w-5 text-right">{emp.score}</span>
+                      <span className="text-[8px] font-semibold text-slate-500 dark:text-slate-400 w-5 text-right">{emp.score}</span>
                     </div>
                   </div>
                   <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 ${riskStyles[emp.risk]}`}>
@@ -193,9 +193,9 @@ function Dashboard() {
           </div>
 
           {/* Alert */}
-          <div className="flex items-center gap-2 rounded-xl px-3 py-2 border border-amber-200 bg-amber-50">
+          <div className="flex items-center gap-2 rounded-xl px-3 py-2 border border-amber-200 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/[0.08]">
             <Bell size={11} className="text-amber-500 flex-shrink-0 animate-pulse" />
-            <span className="text-[9px] text-amber-700 font-medium">
+            <span className="text-[9px] text-amber-700 dark:text-amber-300 font-medium">
               Deepak V. flagged — IPD risk detected, consultation scheduled
             </span>
           </div>
@@ -215,16 +215,16 @@ const LOGOS = [
 function Marquee() {
   const doubled = [...LOGOS, ...LOGOS];
   return (
-    <div className="relative overflow-hidden border-t border-slate-100 py-5">
+    <div className="relative overflow-hidden border-t border-slate-100 dark:border-white/[0.06] py-5">
       <div className="animate-marquee flex gap-12 whitespace-nowrap" style={{ width: "max-content" }}>
         {doubled.map((logo, i) => (
-          <span key={i} className="text-sm font-semibold text-slate-400 select-none tracking-wide">
+          <span key={i} className="text-sm font-semibold text-slate-400 dark:text-slate-600 select-none tracking-wide">
             {logo}
           </span>
         ))}
       </div>
-      <div className="absolute inset-y-0 left-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to right, #ffffff, transparent)" }} />
-      <div className="absolute inset-y-0 right-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
+      <div className="absolute inset-y-0 left-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to right, var(--hero-bg), transparent)" }} />
+      <div className="absolute inset-y-0 right-0 w-24 pointer-events-none" style={{ background: "linear-gradient(to left, var(--hero-bg), transparent)" }} />
     </div>
   );
 }
@@ -244,7 +244,7 @@ const FEATURES = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-white">
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-white dark:bg-slate-950">
       {/* Aurora background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <span className="aurora aurora-1 -top-[20%] -left-[10%] w-[55%] h-[55%]" />
@@ -258,7 +258,7 @@ export function Hero() {
 
         {/* Badge */}
         <div
-          className="reveal inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-4 py-2 text-xs font-semibold text-teal-700 mb-8"
+          className="reveal inline-flex items-center gap-2 rounded-full border border-teal-200 dark:border-teal-500/25 bg-teal-50 dark:bg-teal-500/[0.08] px-4 py-2 text-xs font-semibold text-teal-700 dark:text-teal-400 mb-8"
           style={{ animationDelay: "0ms" }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
@@ -268,7 +268,7 @@ export function Hero() {
 
         {/* Headline */}
         <h1
-          className="reveal text-5xl sm:text-6xl lg:text-[4.25rem] xl:text-[4.75rem] font-extrabold leading-[1.04] tracking-tight text-slate-900 mb-6"
+          className="reveal text-5xl sm:text-6xl lg:text-[4.25rem] xl:text-[4.75rem] font-extrabold leading-[1.04] tracking-tight text-slate-900 dark:text-white mb-6"
           style={{ animationDelay: "100ms" }}
         >
           Keep your team
@@ -280,6 +280,7 @@ export function Hero() {
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
+            className="dark:[background:linear-gradient(135deg,#2dd4bf_0%,#22d3ee_45%,#34d399_100%)] dark:[-webkit-background-clip:text] dark:[background-clip:text]"
           >
             healthy &amp; out of hospital
           </span>
@@ -287,11 +288,11 @@ export function Hero() {
 
         {/* Sub-headline */}
         <p
-          className="reveal text-lg sm:text-xl leading-relaxed text-slate-500 mb-8 max-w-2xl"
+          className="reveal text-lg sm:text-xl leading-relaxed text-slate-500 dark:text-slate-400 mb-8 max-w-2xl"
           style={{ animationDelay: "200ms" }}
         >
           CheckMed gives your employees{" "}
-          <strong className="font-semibold text-slate-700">complete IPD protection</strong>{" "}
+          <strong className="font-semibold text-slate-700 dark:text-slate-200">complete IPD protection</strong>{" "}
           and proactive healthcare — so minor issues never spiral into costly hospital admissions.
         </p>
 
@@ -300,7 +301,7 @@ export function Hero() {
           {FEATURES.map(({ Icon, text }) => (
             <span
               key={text}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-slate-600 border border-slate-200 bg-slate-100/70 hover:border-slate-300 transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/[0.08] bg-slate-100/70 dark:bg-white/[0.04] hover:border-slate-300 dark:hover:border-white/[0.16] transition-colors duration-200"
             >
               <Icon size={11} className="text-teal-500 flex-shrink-0" />
               {text}
@@ -319,7 +320,7 @@ export function Hero() {
           </a>
           <a
             href="#how-it-works"
-            className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-slate-200 text-slate-700 font-semibold text-sm bg-white/60 hover:border-slate-300 hover:bg-white hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto justify-center"
+            className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-slate-200 dark:border-white/[0.12] text-slate-700 dark:text-slate-200 font-semibold text-sm bg-white/60 dark:bg-white/[0.02] hover:border-slate-300 dark:hover:border-white/[0.24] hover:bg-white dark:hover:bg-white/[0.05] hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto justify-center"
           >
             See how it works
           </a>
@@ -334,12 +335,12 @@ export function Hero() {
           ].map(({ to, suffix, label }, i) => (
             <div
               key={label}
-              className={`text-center px-6 sm:px-12 ${i > 0 ? "border-l border-slate-200" : ""}`}
+              className={`text-center px-6 sm:px-12 ${i > 0 ? "border-l border-slate-200 dark:border-white/[0.08]" : ""}`}
             >
-              <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 <Counter to={to} suffix={suffix} />
               </div>
-              <div className="text-xs text-slate-500 mt-1.5">{label}</div>
+              <div className="text-xs text-slate-500 dark:text-slate-500 mt-1.5">{label}</div>
             </div>
           ))}
         </div>
@@ -352,7 +353,7 @@ export function Hero() {
 
       {/* Trusted by + marquee */}
       <div className="relative mt-8">
-        <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-4">
+        <p className="text-center text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-600 mb-4">
           Trusted by teams at
         </p>
         <Marquee />
